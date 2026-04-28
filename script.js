@@ -1,34 +1,41 @@
 function calcular() {
-  let tickets = Number(document.getElementById("tickets").value);
-  let consultas = Number(document.getElementById("consultas").value);
-  let tokensIn = Number(document.getElementById("tokensIn").value);
-  let tokensOut = Number(document.getElementById("tokensOut").value);
-  let tiempoActual = Number(document.getElementById("tiempoActual").value);
-  let tiempoIA = Number(document.getElementById("tiempoIA").value);
-  let costeHora = Number(document.getElementById("costeHora").value);
+  let campos = ["tickets","consultas","tokensIn","tokensOut","tiempoActual","tiempoIA","costeHora"];
+  
+  for (let c of campos) {
+    if (!document.getElementById(c).value) {
+      document.getElementById("error").innerText = "Faltan datos";
+      return;
+    }
+  }
 
-  let consultasTotales = tickets * consultas;
-  let tokensEntrada = consultasTotales * tokensIn;
-  let tokensSalida = consultasTotales * tokensOut;
+  let tickets = Number(tickets.value);
+  let consultas = Number(consultas.value);
+  let tokensIn = Number(tokensIn.value);
+  let tokensOut = Number(tokensOut.value);
+  let tAct = Number(tiempoActual.value);
+  let tIA = Number(tiempoIA.value);
+  let coste = Number(costeHora.value);
 
-  let minutosAhorrados = (tiempoActual - tiempoIA) * tickets;
-  let horasAhorradas = minutosAhorrados / 60;
-  let ahorro = horasAhorradas * costeHora;
+  let consultasTot = tickets * consultas;
+  let tokensEntrada = consultasTot * tokensIn;
+  let tokensSalida = consultasTot * tokensOut;
 
-  document.getElementById("res").innerText =
-    "Consultas: " + consultasTotales +
-    " | Tokens entrada: " + tokensEntrada +
-    " | Tokens salida: " + tokensSalida +
-    " | Ahorro (€): " + ahorro.toFixed(2);
+  let ahorroMin = (tAct - tIA) * tickets;
+  let ahorroHoras = ahorroMin / 60;
+  let ahorro = ahorroHoras * coste;
+
+  document.getElementById("resultados").innerHTML = `
+    Consultas: ${consultasTot}<br>
+    Tokens entrada: ${tokensEntrada}<br>
+    Tokens salida: ${tokensSalida}<br>
+    Ahorro horas: ${ahorroHoras.toFixed(2)}<br>
+    Ahorro €: ${ahorro.toFixed(2)}
+  `;
 }
 
 function generarResumen() {
-  let res = document.getElementById("res").innerText;
-  let raid = document.getElementById("raid").value;
-  let decision = document.getElementById("decision").value;
-
-  document.getElementById("resumen").value =
-    "RESULTADOS:\n" + res +
-    "\n\nRAID:\n" + raid +
-    "\n\nDECISIÓN:\n" + decision;
+  resumen.value =
+    resultados.innerText +
+    "\n\nRAID:\n" + raid.value +
+    "\n\nDECISIÓN:\n" + decision.value;
 }
