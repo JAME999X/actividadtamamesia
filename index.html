@@ -1,69 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Analizador IA Atención al Cliente</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Analizador IA</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Analizador de Integración de IA</h1>
+<h1>Integración de IA en Atención al Cliente</h1>
 
 <section>
-  <h2>Datos del caso</h2>
-  <label>Tickets mensuales:</label>
-  <input id="tickets" type="number"><br>
+<h2>1. Datos</h2>
 
-  <label>Consultas por ticket:</label>
-  <input id="consultas" type="number"><br>
+<input id="tickets" placeholder="Tickets mensuales">
+<input id="consultas" placeholder="Consultas por ticket">
+<input id="tokensIn" placeholder="Tokens entrada">
+<input id="tokensOut" placeholder="Tokens salida">
+<input id="tiempoActual" placeholder="Tiempo actual (min)">
+<input id="tiempoIA" placeholder="Tiempo con IA (min)">
+<input id="costeHora" placeholder="Coste hora (€)">
 
-  <label>Tokens entrada por consulta:</label>
-  <input id="tokensIn" type="number"><br>
-
-  <label>Tokens salida por consulta:</label>
-  <input id="tokensOut" type="number"><br>
-
-  <label>Tiempo actual (min):</label>
-  <input id="tiempoActual" type="number"><br>
-
-  <label>Tiempo con IA (min):</label>
-  <input id="tiempoIA" type="number"><br>
-
-  <label>Coste hora (€):</label>
-  <input id="costeHora" type="number"><br>
-
-  <button onclick="calcular()">Calcular</button>
+<button onclick="calcular()">Calcular</button>
+<p id="error"></p>
 </section>
 
 <section>
-  <h2>Resultados</h2>
-  <p id="res"></p>
+<h2>2. Resultados</h2>
+<div id="resultados"></div>
 </section>
 
 <section>
-  <h2>Matriz comparativa</h2>
-  <table>
-    <tr><th>Criterio</th><th>API externa</th><th>Cloud</th></tr>
-    <tr><td>Coste inicial</td><td><input></td><td><input></td></tr>
-    <tr><td>Protección datos</td><td><input></td><td><input></td></tr>
-    <tr><td>Latencia</td><td><input></td><td><input></td></tr>
-  </table>
+<h2>3. Matriz comparativa</h2>
+<table>
+<tr><th>Criterio</th><th>API</th><th>Cloud</th></tr>
+<tr><td>Coste inicial</td><td><input></td><td><input></td></tr>
+<tr><td>Escalabilidad</td><td><input></td><td><input></td></tr>
+<tr><td>Protección datos</td><td><input></td><td><input></td></tr>
+<tr><td>Trazabilidad</td><td><input></td><td><input></td></tr>
+<tr><td>Latencia</td><td><input></td><td><input></td></tr>
+</table>
 </section>
 
 <section>
-  <h2>Mini-RAID</h2>
-  <textarea id="raid" placeholder="Riesgos, supuestos, incidencias..."></textarea>
+<h2>4. Mini-RAID</h2>
+<textarea id="raid" placeholder="Riesgos / Supuestos / Incidencias / Dependencias"></textarea>
 </section>
 
 <section>
-  <h2>Decisión final</h2>
-  <textarea id="decision"></textarea>
+<h2>5. Decisión</h2>
+<textarea id="decision"></textarea>
 </section>
 
 <section>
-  <h2>Resumen</h2>
-  <button onclick="generarResumen()">Generar</button>
-  <textarea id="resumen"></textarea>
+<h2>6. Resumen</h2>
+<button onclick="generarResumen()">Generar resumen</button>
+<textarea id="resumen"></textarea>
 </section>
 
 <script src="script.js"></script>
